@@ -1,0 +1,8 @@
+- hosts: localhost
+  gather_facts: no
+  vars_files:
+        - credentials.yml
+  tasks:
+    - name: Running EC2 Role
+      include_role:
+        name: ec2
