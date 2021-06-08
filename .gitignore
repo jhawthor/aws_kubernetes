@@ -3,6 +3,6 @@
 .notes
 
 # Files to ignore
-#ansible.pem
-#credentials.yml
+ansible.pem
+credentials.yml
 
