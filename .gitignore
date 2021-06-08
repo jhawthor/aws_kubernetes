@@ -4,3 +4,4 @@
 
 # Files to ignore
 ansible.pem
+aws_access_key.csv
