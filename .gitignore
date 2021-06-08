@@ -1,0 +1,6 @@
+# Project setup
+.vscode
+.notes
+
+# Files to ignore
+ansible.pem
