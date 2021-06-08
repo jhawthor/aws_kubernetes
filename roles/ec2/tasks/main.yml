@@ -41,3 +41,24 @@
       Name: "{{ item }}"
   register: ec2
   loop: "{{ instance_tag }}"
+
+- name: Add 1st instance to host group ec2_master
+  add_host:
+    hostname: "{{ ec2.results[0].instances[0].public_ip }}"
+    groupname: ec2_master
+
+- name: Add 2nd instance to host group ec2_slave
+  add_host:
+    hostname: "{{ ec2.results[1].instances[0].public_ip }}"
+    groupname: ec2_slave
+
+- name: Add 3rd instance to host group ec2_slave
+  add_host:
+    hostname: "{{ ec2.results[2].instances[0].public_ip }}"
+    groupname: ec2_slave
+
+- name: Waiting for SSH to start
+  wait_for:
+    host: "{{ ec2.results[2].instances[0].public_dns_name }}"
+    port: 22
+    state: started
