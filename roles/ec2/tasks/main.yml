@@ -1,2 +1,7 @@
 ---
 # tasks file for ec2
+- name: Installing boto & boto3 on local system
+  pip:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ python_pkgs }}"
