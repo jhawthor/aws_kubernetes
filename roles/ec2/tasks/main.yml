@@ -35,8 +35,8 @@
     assign_public_ip: yes
     region: "{{ region_name }}"
     state: present
-    aws_access_key: "{{ aws_access_id }}"
-    aws_secret_key: "{{ aws_secret_key }}"
+    aws_access_key: "{{ access_id }}"
+    aws_secret_key: "{{ secret_key }}"
     instance_tags:
       Name: "{{ item }}"
   register: ec2
