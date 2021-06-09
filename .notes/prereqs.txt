@@ -1,0 +1,11 @@
+1. Create a keypair
+From ec2 dashboard, reaources, select "Key Pairs"
+select "Create key pair"
+Name: ansible
+File Format: pem
+select "Create key pair"
+
+
+Create Access key:
+Access Key ID: AKIAQAU23TJ2WWF2HSH3
+Secret Access Key: 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
