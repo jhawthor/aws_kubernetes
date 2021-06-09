@@ -12,6 +12,7 @@ python_pkgs:
 sg_name: Kubernetes_SG
 region_name: us-east-2
 subnet_name: subnet-c4f69e88
-ami_id: ami-0ba62214afa52bec7
+ami_id: ami-00399ec92321828f5  #ubuntu
+#ami_id: ami-0ba62214afa52bec7 #centos
 keypair: ansible
 instance_flavour: t2.micro
