@@ -12,11 +12,11 @@
   tasks:
     - name: Running K8s Master Role
       include_role:
-        name: k8s_master
+        name: k8_master
 
 - hosts: ec2_slave
   gather_facts: no
   tasks:
     - name: Running K8s Slave Role
       include_role:
-        name: k8s_slave
+        name: k8_slave

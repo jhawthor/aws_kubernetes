@@ -14,13 +14,9 @@
     aws_access_key: "{{ access_id }}"
     aws_secret_key: "{{ access_key }}"
     rules:
-    - proto: tcp
-      from_port: 80
-      to_port: 80
+    - proto: all
       cidr_ip: 0.0.0.0/0
-    - proto: tcp
-      from_port: 22
-      to_port: 22
+    - proto: all
       cidr_ip: 0.0.0.0/0
 
 - name: Launch three EC2 instances on AWS
