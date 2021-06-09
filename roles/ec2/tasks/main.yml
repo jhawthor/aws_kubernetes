@@ -5,8 +5,8 @@
     name: "{{ sg_name }}"
     description: Security Group for SSH and Web App 
     region: "{{ region_name }}"
-    aws_access_key: "{{ access_id }}"
-    aws_secret_key: "{{ access_key }}"
+    aws_access_key: "{{ access_key }}"
+    aws_secret_key: "{{ secret_key }}"
     rules:
     - proto: all
       cidr_ip: 0.0.0.0/0
@@ -25,8 +25,8 @@
     assign_public_ip: yes
     region: "{{ region_name }}"
     state: present
-    aws_access_key: "{{ access_id }}"
-    aws_secret_key: "{{ access_key }}"
+    aws_access_key: "{{ access_key }}"
+    aws_secret_key: "{{ secret_key }}"
     instance_tags:
       Name: "{{ item }}"
   register: ec2
