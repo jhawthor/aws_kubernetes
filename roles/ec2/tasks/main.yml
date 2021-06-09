@@ -11,7 +11,7 @@
     name: "{{ sg_name }}"
     description: Security Group for SSH and Web App 
     region: "{{ region_name }}"
-    aws_access_key: "{{ access_key }}"
+    aws_access_key: "{{ access_id }}"
     aws_secret_key: "{{ secret_key }}"
     rules:
     - proto: tcp
