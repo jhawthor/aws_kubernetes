@@ -1,2 +1,5 @@
 ---
 # vars file for k8_master
+service_names:
+  - "docker"
+  - "kubelet"
