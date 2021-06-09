@@ -1,8 +1,8 @@
 # Project setup
 .vscode
-# .notes
+.notes
 
 # Files to ignore
-# ansible.pem
-# credentials.yml
+ansible.pem
+credentials.yml
 
