@@ -12,7 +12,7 @@
     description: Security Group for SSH and Web App 
     region: "{{ region_name }}"
     aws_access_key: "{{ access_id }}"
-    aws_secret_key: "{{ secret_key }}"
+    aws_secret_key: "{{ access_key }}"
     rules:
     - proto: tcp
       from_port: 80
@@ -36,7 +36,7 @@
     region: "{{ region_name }}"
     state: present
     aws_access_key: "{{ access_id }}"
-    aws_secret_key: "{{ secret_key }}"
+    aws_secret_key: "{{ access_key }}"
     instance_tags:
       Name: "{{ item }}"
   register: ec2
