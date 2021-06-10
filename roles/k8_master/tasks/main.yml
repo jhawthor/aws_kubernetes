@@ -4,16 +4,10 @@
   yum_repository:
     name: kube
     description: Kubernetes repo
-    baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+    baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-$basearch
     enabled: 1
     gpgcheck: 1
     gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-  
-- name: Add Docker repo to Master Node
-  get_url:
-    url: https://download.docker.com/linux/centos/docker-ce.repo
-    dest: /etc/yum.repos.d/docer-ce.repo
-  become: yes
 
 - name: Installing Docker & kubeadm on Master Node
   package:
