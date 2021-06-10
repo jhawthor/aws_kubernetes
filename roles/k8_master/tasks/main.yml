@@ -8,7 +8,7 @@
     enabled: 1
     gpgcheck: 1
     gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
-
+  
 - name: Add Docker repo to Master Node
   get_url:
     url: https://download.docker.com/linux/centos/docker-ce.repo
