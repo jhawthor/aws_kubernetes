@@ -1,6 +1,6 @@
 ---
 # tasks file for k8_master
-- name: Add kubeadm repositories on Master Node
+- name: Adding kubeadm repositories on the Master Node
   yum_repository:
     name: kube
     description: Kubernetes repo
@@ -9,7 +9,7 @@
     gpgcheck: 1
     gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 
-- name: Installing Docker & kubeadm on Master Node
+- name: Installing Docker & kubeadm on the Master Node
   package:
     name:
       - docker
@@ -17,14 +17,14 @@
       - iproute-tc
     state: present
 
-- name: Updating IP tables on Master
+- name: Updating IP tables on the Master
   copy:
     dest: /etc/sysctl.d/k8s.conf
     content: |
       net.bridge.bridge-nf-call-ip6tables = 1
       net.bridge.bridge-nf-call-iptables = 1
 
-- name: Staring & enabling Docker & kubelet on Master Node
+- name: Staring Docker & kubelet on the Master Node
   service:
     name: "{{ item }}"
     state: started
@@ -34,7 +34,7 @@
 - name: Pulling the images of k8s master
   command: kubeadm config images pull
 
-- name: Updating Docker cgroup on Master Node
+- name: Updating Docker cgroup on the Master Node
   copy:
     dest: /etc/docker/daemon.json
     content: |
@@ -42,7 +42,7 @@
       "exec-opts": ["native.cgroupdriver=systemd"]
       }
 
-- name: Restart docker on Master Node
+- name: Restarting Docker on the Master Node
   service:
     name: docker
     state: restarted
@@ -50,7 +50,7 @@
 - name: Initializing k8s cluster
   command: kubeadm init --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=NumCPU --ignore-preflight-errors=Mem
 
-- name: Setting up kubectl on Master Node
+- name: Setting up kubectl on the Master Node
   shell:
     cmd: |
       mkdir -p $HOME/.kube
@@ -60,9 +60,9 @@
 - name: Deploying Flannel on Master Node
   command: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
-- name: Creating token for Slave
+- name: Creating token for Slave nodes
   command: kubeadm token create  --print-join-command
   register: token
 
-- name: Cleaning Caches on RAM
-  shell: echo 3 > /proc/sys/vm/drop_caches
+# - name: Cleaning Caches on RAM
+#   shell: echo 3 > /proc/sys/vm/drop_caches

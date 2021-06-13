@@ -1,21 +1,22 @@
 ---
 # tasks file for k8_slave
-- name: Add kubeadm repositories on Slave Node
+- name: Adding kubeadm repositories on Slave Node
   yum_repository:
     name: kube
+    description: Kubernetes repo
     description: Kubernetes repo
     baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-$basearch
     enabled: 1
     gpgcheck: 1
     gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 
-- name: Add Docker repo on Slave Node
+- name: Adding Docker repo on Slave Nodes
   get_url:
     url: https://download.docker.com/linux/centos/docker-ce.repo
     dest: /etc/yum.repos.d/docer-ce.repo
   become: yes
 
-- name: Installing Docker & kubeadm on Slave Node
+- name: Installing Docker & kubeadm on Slave Nodes
   package:
     name:
       - docker
@@ -23,14 +24,14 @@
       - iproute-tc
     state: present
 
-- name: Staring & enabling Docker & kubelet on Slave Node
+- name: Staring Docker & kubelet on Slave Nodes
   service:
     name: "{{ item }}"
     state: started
     enabled: yes
   loop: "{{ service_names }}"
 
-- name: Updating Docker cgroup on Slave Node
+- name: Updating Docker cgroup on Slave Nodes
   copy:
     dest: /etc/docker/daemon.json
     content: |
@@ -38,22 +39,22 @@
       "exec-opts": ["native.cgroupdriver=systemd"]
       }
 
-- name: Restart Docker on Slave Node
+- name: Restarting Docker on Slave Nodes
   service:
     name: docker
     state: restarted
 
-- name: Updating IP tables on Slave Node
+- name: Updating IP tables on Slave Nodes
   copy:
     dest: /etc/sysctl.d/k8s.conf
     content: |
       net.bridge.bridge-nf-call-ip6tables = 1
       net.bridge.bridge-nf-call-iptables = 1
 
-- name: Reloading sysctl on Slave Node
+- name: Reloading sysctl on Slave Nodes
   command: sysctl --system
 
-- name: Joining the master node
+- name: Joining slave nodes to the master node
   command: "{{ hostvars[groups['ec2_master'][0]]['token']['stdout'] }}"
 
 - name: Cleaning Caches on RAM

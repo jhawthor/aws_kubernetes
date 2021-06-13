@@ -1,9 +1,9 @@
 ---
 # vars file for ec2
 instance_tag:
-        - master
-        - slave1
-        - slave2
+        - kube_master02
+        - kube_slave01
+        - kube_slave02
 
 python_pkgs:
         - boto
@@ -14,6 +14,6 @@ region_name: us-east-2
 subnet_name: subnet-c4f69e88
 ami_id: ami-0d8d212151031f51c  #amizon
 # ami_id: ami-00399ec92321828f5  #ubuntu
-#ami_id: ami-0ba62214afa52bec7 #centos
+# ami_id: ami-0ba62214afa52bec7 #centos
 keypair: ansible
 instance_flavour: t2.micro
