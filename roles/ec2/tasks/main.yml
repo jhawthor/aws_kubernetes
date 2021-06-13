@@ -1,5 +1,11 @@
 ---
 # tasks file for ec2
+- name: Install boto and boto3 on local host
+  pip:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ python_pkgs }}"
+
 - name: Create the Security Group for the K8s Cluster
   ec2_group:
     name: "{{ sg_name }}"
