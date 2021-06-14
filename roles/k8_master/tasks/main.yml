@@ -60,10 +60,7 @@
 - name: Deploying Flannel on Master Node
   # command: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
   command: kubectl apply -f https://cloud.weave.works/k8s/net
-  
+
 - name: Creating token for Slave nodes
   command: kubeadm token create  --print-join-command
   register: token
-
-# - name: Cleaning Caches on RAM
-#   shell: echo 3 > /proc/sys/vm/drop_caches
