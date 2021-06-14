@@ -4,17 +4,16 @@
   yum_repository:
     name: kube
     description: Kubernetes repo
-    description: Kubernetes repo
     baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-$basearch
     enabled: 1
     gpgcheck: 1
     gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 
-- name: Adding Docker repo on Slave Nodes
-  get_url:
-    url: https://download.docker.com/linux/centos/docker-ce.repo
-    dest: /etc/yum.repos.d/docer-ce.repo
-  become: yes
+# - name: Adding Docker repo on Slave Nodes
+#   get_url:
+#     url: https://download.docker.com/linux/centos/docker-ce.repo
+#     dest: /etc/yum.repos.d/docer-ce.repo
+#   become: yes
 
 - name: Installing Docker & kubeadm on Slave Nodes
   package:

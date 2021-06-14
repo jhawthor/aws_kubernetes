@@ -4,5 +4,5 @@
 
 # Files to ignore
 ansible.pem
-cred*.yml
+cred.yml
 

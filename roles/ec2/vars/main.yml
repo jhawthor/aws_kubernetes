@@ -1,9 +1,9 @@
 ---
 # vars file for ec2
 instance_tag:
-        - kube_master02
-        - kube_slave01
-        - kube_slave02
+        - master01
+        - slave01
+        - slave02
 
 python_pkgs:
         - boto
