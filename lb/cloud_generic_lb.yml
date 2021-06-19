@@ -1,3 +1,16 @@
+---
+- amazon.aws.ec2_elb_lb:
+    name: "ELB"
+    state: present
+    region: us-east-2
+    zones:
+      - us-east-2a
+      - us-east-2d
+    listeners:
+      - protocol: http
+        load_balancer_port: 80
+        instance_port: 80
+---
 kind: Service
 apiVersion: v1
 metadata:
@@ -18,3 +31,5 @@ spec:
     - name: https
       port: 443
       targetPort: https
+
+
