@@ -3,10 +3,5 @@
 - name: Create INGRESS NETWORK LOAD BALANCER (NLB)
   command: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.47.0/deploy/static/provider/cloud/deploy.yaml
 
-- name: Sleep for 20 seconds and continue with play
-  wait_for:
-    timeout: 20
-  delegate_to: localhost
-
 - name: Check the INGRESS service
-  command: kubectl get pods -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
+  command: kubectl get pods -A
