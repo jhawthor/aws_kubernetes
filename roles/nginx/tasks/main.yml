@@ -3,5 +3,5 @@
 - name: Create INGRESS NETWORK LOAD BALANCER (NLB)
   command: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.47.0/deploy/static/provider/cloud/deploy.yaml
 
-- name: Check the INGRESS service
-  command: kubectl apply -f https://raw.githubusercontent.com/jhawthor/aws_kubernetes/master/lb/cloud_generic_lb.yml 
+# - name: Check the INGRESS service
+#   command: kubectl apply -f https://raw.githubusercontent.com/jhawthor/aws_kubernetes/master/lb/cloud_generic_lb.yml 
