@@ -4,4 +4,4 @@
   command: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.47.0/deploy/static/provider/cloud/deploy.yaml
 
 - name: Check the INGRESS service
-  command: kubectl get pods -A
+  command: kubectl apply -f /home/ansible/prod/aws_kubernetes/cloud_generic_lb.yml 
