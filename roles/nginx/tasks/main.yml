@@ -1,2 +1,11 @@
 ---
 # tasks file for nginx
+- name: Create INGRESS NETWORK LOAD BALANCER (NLB)
+  command: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.47.0/deploy/static/provider/cloud/deploy.yaml
+
+- name: Wait for INGRESS Service to start
+  wait_for:
+    delay: 20
+
+- name: Check the INGRESS service
+  command: kubectl get pods -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
