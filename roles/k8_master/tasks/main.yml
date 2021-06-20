@@ -60,10 +60,6 @@
 - name: Deploying Flannel on Master Node
   command: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
-- name: Flannel Network Status
-    debug:
-      msg: "Flannel Network failed => {{ Flannel_status.failed }}"
-
 - name: Install Metrics Server for HPA
   command: kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
 
