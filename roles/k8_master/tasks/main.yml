@@ -64,6 +64,9 @@
     debug:
       msg: "Flannel Network failed => {{ Flannel_status.failed }}"
 
+- name: Install Metrics Server for HPA
+  command: kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
+
 - name: Creating token for Slave nodes
   command: kubeadm token create  --print-join-command
   register: token
