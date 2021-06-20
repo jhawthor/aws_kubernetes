@@ -1,5 +1,8 @@
 ---
 # tasks file for nginx
+- name: Create INGRESS NETWORK LOAD BALANCER (NLB)
+  command: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.47.0/deploy/static/provider/cloud/deploy.yaml
+  
 - name: Deploy Nginx Demo App
   command: kubectl apply -f https://raw.githubusercontent.com/jhawthor/aws_kubernetes/master/scripts/nginx_scale_demo.yml
 
