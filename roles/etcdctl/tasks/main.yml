@@ -1,5 +1,10 @@
 ---
 # tasks file for etcdctl
-- name: Install ETCDCTL 
-  shell: https://raw.githubusercontent.com/jhawthor/aws_kubernetes/master/scripts/install-etcdctl.sh
+- name: Copy ETCDCTL script
+  copy:
+        src: https://raw.githubusercontent.com/jhawthor/aws_kubernetes/master/scripts/install-etcdctl.sh
+        dest: install-etcdctl.sh
+ 
+- name: Install ETCDCTL
+  shell: install-etcdctl.sh
   become: true
