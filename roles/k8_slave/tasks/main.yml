@@ -1,6 +1,6 @@
 ---
 # tasks file for k8_slave
-- name: Adding kubeadm repositories on Slave Node
+- name: Adding kubeadm repositories on Slave Nodes
   yum_repository:
     name: kube
     description: Kubernetes repo
@@ -9,7 +9,7 @@
     gpgcheck: 1
     gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 
-- name: Installing Docker & kubeadm on Slave Nodes
+- name: Installing Docker and kubeadm on Slave Nodes
   package:
     name:
       - docker
