@@ -1,12 +1,12 @@
 ---
 # tasks file for etcdctl
-- name: Copy ETCDCTL script
-  copy:
-    src: https://raw.githubusercontent.com/jhawthor/aws_kubernetes/master/scripts/install-etcdctl.sh
-    dest: install-etcdctl.sh
- 
-- name: Install ETCDCTL
+ - name: Install ETCDCTL
   shell:
-    cmd:
-      sudo chmod u+x hello_script.sh
-      sudo install-etcdctl.sh
+    cmd: |
+      export RELEASE="3.3.13"
+      wget https://github.com/etcd-io/etcd/releases/download/v${RELEASE}/etcd-v${RELEASE}-linux-amd64.tar.gz
+      tar xvf etcd-v${RELEASE}-linux-amd64.tar.gz
+      rm -f etcd-v${RELEASE}-linux-amd64.tar.gz
+      cd etcd-v${RELEASE}-linux-amd64
+      sudo mv etcdctl /usr/local/bin  
+    
