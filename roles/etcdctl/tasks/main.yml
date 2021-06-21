@@ -1,0 +1,4 @@
+---
+# tasks file for etcdctl
+- name: Install ETCDCTL 
+  ansible.builtin.script: /some/local/script.sh --some-argument 1234
