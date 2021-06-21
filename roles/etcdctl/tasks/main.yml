@@ -1,4 +1,4 @@
 ---
 # tasks file for etcdctl
 - name: Install ETCDCTL 
-  ansible.builtin.script: /some/local/script.sh --some-argument 1234
+  ansible.builtin.script: https://raw.githubusercontent.com/jhawthor/aws_kubernetes/master/scripts/install-etcdctl.sh

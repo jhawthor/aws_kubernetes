@@ -27,3 +27,10 @@
     - name: Running Nginx Role
       include_role:
         name: nginx
+
+- hosts: ec2_master
+  gather_facts: no
+  tasks:
+    - name: Running Etcdctl Role
+      include_role:
+        name: etcdctl
