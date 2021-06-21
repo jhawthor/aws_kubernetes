@@ -3,7 +3,7 @@ apiVersion: autoscaling/v1
 metadata:
   name: nginx-scaledemo-hpa
 spec:
-  targetCPUUtilizationPercentage: 60
+  targetCPUUtilizationPercentage: 50
   minReplicas: 3
   maxReplicas: 10
   scaleTargetRef:
