@@ -24,7 +24,7 @@
     enabled: yes
   loop: "{{ service_names }}"
 
-- name: Updating Docker cgroup on Slave Nodes
+- name: Updating Docker cgroup on Slave Nodes to use systemd
   copy:
     dest: /etc/docker/daemon.json
     content: |

@@ -9,7 +9,7 @@
     gpgcheck: 1
     gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 
-- name: Installing Docker & kubeadm on the Master Node
+- name: Installing Docker and kubeadm on the Master Node
   package:
     name:
       - docker
@@ -34,7 +34,7 @@
 - name: Pulling the images of k8s master
   command: kubeadm config images pull
 
-- name: Updating Docker cgroup on the Master Node
+- name: Updating Docker cgroup on the Master Node to use systemd
   copy:
     dest: /etc/docker/daemon.json
     content: |
@@ -60,7 +60,7 @@
 - name: Deploying CNI (Flannel) on the Master Only
   command: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
-- name: Install Metrics Server for HPA
+- name: Install Metrics Server for Horizontal Pod Autoscaling (HPA)
   command: kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
 
 - name: Creating token for Slave nodes
