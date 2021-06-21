@@ -5,10 +5,6 @@ instance_tag:
         - slave01
         - slave02
 
-python_pkgs:
-        - boto
-        - boto3
-
 sg_name: AWS_Kubernetes_SG
 region_name: us-east-2
 subnet_name: subnet-c4f69e88
