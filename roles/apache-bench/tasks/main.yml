@@ -1,0 +1,7 @@
+---
+# tasks file for apache-bench
+ - name: Install Apache Bench
+   shell:
+     cmd: |
+       sudo apt install apache2-utils
+    

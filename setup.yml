@@ -24,6 +24,13 @@
 - hosts: ec2_master
   gather_facts: no
   tasks:
+    - name: Running Nginx-Ingress Role
+      include_role:
+        name: nginx-ingress
+
+- hosts: ec2_master
+  gather_facts: no
+  tasks:
     - name: Running Nginx Role
       include_role:
         name: nginx
@@ -34,3 +41,10 @@
     - name: Running Etcdctl Role
       include_role:
         name: etcdctl
+
+- hosts: ec2_master
+  gather_facts: no
+  tasks:
+    - name: Running Apache Bench Role
+      include_role:
+        name: apache-bench

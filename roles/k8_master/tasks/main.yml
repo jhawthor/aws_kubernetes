@@ -63,9 +63,6 @@
 - name: Install Metrics Server for Horizontal Pod Autoscaling (HPA)
   command: kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
 
-# - name: Create Mandatory resources for NGINX Ingress
-#   command: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-0.32.0/deploy/static/provider/aws/deploy.yaml
-
 - name: Creating token for Slave nodes
   command: kubeadm token create  --print-join-command
   register: token
