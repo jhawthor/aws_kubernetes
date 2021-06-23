@@ -3,5 +3,10 @@
  - name: Install Apache Bench
    shell:
      cmd: |
-       sudo apt install apache2-utils
+       sudo yum install apache2-utils
+    
+
+
+
+
     
