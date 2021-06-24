@@ -31,9 +31,9 @@
 - hosts: ec2_master
   gather_facts: no
   tasks:
-    - name: Running Nginx Role
+    - name: Running App Role
       include_role:
-        name: nginx
+        name: app
 
 - hosts: ec2_master
   gather_facts: no

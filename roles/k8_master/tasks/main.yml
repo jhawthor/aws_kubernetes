@@ -9,7 +9,7 @@
     gpgcheck: 1
     gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 
-- name: Installing Docker and kubeadm on the Master Node
+- name: Install Docker, kubeadm and iproute-tc on the Master Node
   package:
     name:
       - docker
@@ -17,7 +17,7 @@
       - iproute-tc
     state: present
 
-- name: Updating IP tables on the Master
+- name: Update IP tables on the Master
   copy:
     dest: /etc/sysctl.d/k8s.conf
     content: |
@@ -31,10 +31,10 @@
     enabled: yes
   loop: "{{ service_names }}"
 
-- name: Pulling the images of k8s master
+- name: Pull the images for k8s master
   command: kubeadm config images pull
 
-- name: Updating Docker cgroup on the Master Node to use systemd
+- name: Update Docker cgroup on the Master Node to use systemd
   copy:
     dest: /etc/docker/daemon.json
     content: |
@@ -42,28 +42,28 @@
       "exec-opts": ["native.cgroupdriver=systemd"]
       }
 
-- name: Restarting Docker on the Master Node
+- name: Restart Docker on the Master Node
   service:
     name: docker
     state: restarted
 
-- name: Initializing k8s cluster
+- name: Initialize k8s cluster
   command: kubeadm init --pod-network-cidr=10.244.0.0/16 --ignore-preflight-errors=NumCPU --ignore-preflight-errors=Mem
 
-- name: Setting up kubectl on the Master Node
+- name: Set up kubectl on the Master Node
   shell:
     cmd: |
       mkdir -p $HOME/.kube
       sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
       sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-- name: Deploying CNI (Flannel) on the Master Only
+- name: Deploy CNI (Flannel) on the Master Only
   command: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 
 - name: Install Metrics Server for Horizontal Pod Autoscaling (HPA)
   command: kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
 
-- name: Creating token for Slave nodes
+- name: Create token for Slave nodes
   command: kubeadm token create  --print-join-command
   register: token
 

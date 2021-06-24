@@ -9,7 +9,7 @@
     gpgcheck: 1
     gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 
-- name: Installing Docker and kubeadm on Slave Nodes
+- name: Installing Docker, kubeadm and iproute-tc on Slave Nodes
   package:
     name:
       - docker
@@ -47,5 +47,5 @@
 - name: Reloading sysctl on Slave Nodes
   command: sysctl --system
 
-- name: Joining slave nodes to the master node
+- name: Join slave nodes to the master node
   command: "{{ hostvars[groups['ec2_master'][0]]['token']['stdout'] }}"
